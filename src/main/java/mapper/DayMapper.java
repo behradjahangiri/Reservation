@@ -3,6 +3,9 @@ package mapper;
 import dto.CreateDayDto;
 import model.Day;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DayMapper {
     public Day toEntity(CreateDayDto createDayDto) {
         return Day
@@ -19,5 +22,11 @@ public class DayMapper {
                 .dayOfWeek(day.getDayOfWeek())
                 .classList(day.getClassList())
                 .build();
+    }
+    public List<CreateDayDto> toDtoList(List<Day> dayList) {
+        return dayList
+                .stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
     }
 }
