@@ -7,7 +7,6 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @SuperBuilder
@@ -17,18 +16,19 @@ import java.time.LocalTime;
 @ToString
 
 @Entity(name = "ClassEntity")
-@Table(name = "CLASS")
+@Table(name = "CLASS_INFO")
 
 
 public class ClassInfo extends BaseEntity {
+    public final static String FIND_ALL = "ClassInfo.findAll";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer classID;
     private String className;
     private Integer classDuration;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
 //    private LocalDateTime dateClassStart;
 //    private LocalDateTime dateClassEnd;
 

@@ -19,14 +19,15 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 
-@Entity
-@Table
+@Entity(name = "DayEntity")
+@Table(name = "DAYS")
+
 
 public class Day extends BaseEntity {
+    public final static String FIND_ALL = "Day.FIND_ALL";
     @Id
     private Integer id;
     private DayOfWeek dayOfWeek;
-    private int classNumbers = 0;
     private List<ClassInfo> classList = new ArrayList<>();
-
+//    private int classNumbers = classList.size();
 }
