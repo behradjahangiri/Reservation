@@ -11,18 +11,18 @@ public class ClassInfoMapper {
         return ClassInfo
                 .builder()
                 .className(createClassInfoDto.getClassName())
-                .classDuration(createClassInfoDto.getClassDuration())
                 .startTime(createClassInfoDto.getStartTime())
                 .endTime(createClassInfoDto.getEndTime())
+                .dayOfWeek(createClassInfoDto.getDayOfWeek())
                 .build();
     }
     public CreateClassInfoDto entityToDto(ClassInfo classInfo) {
         return CreateClassInfoDto
                 .builder()
                 .className(classInfo.getClassName())
-                .classDuration(classInfo.getClassDuration())
                 .startTime(classInfo.getStartTime())
                 .endTime(classInfo.getEndTime())
+                .dayOfWeek(classInfo.getDayOfWeek())
                 .build();
     }
     public List<CreateClassInfoDto> toDtoList(List<ClassInfo> classInfoList) {

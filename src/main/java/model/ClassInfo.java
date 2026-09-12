@@ -7,6 +7,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @SuperBuilder
@@ -16,7 +17,7 @@ import java.time.LocalTime;
 @ToString
 
 @Entity(name = "ClassEntity")
-@Table(name = "CLASS_INFO")
+//@Table(name = "CLASS_INFO")
 
 
 public class ClassInfo extends BaseEntity {
@@ -26,10 +27,10 @@ public class ClassInfo extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer classID;
     private String className;
-    private Integer classDuration;
     private LocalTime startTime;
     private LocalTime endTime;
+    @Enumerated(EnumType.STRING)
+    private DayOfWeek dayOfWeek;
 //    private LocalDateTime dateClassStart;
 //    private LocalDateTime dateClassEnd;
-
 }
