@@ -1,7 +1,10 @@
 package servlet;
 
 
+import dto.CreateClassInfoDto;
 import lombok.extern.slf4j.Slf4j;
+import model.ClassInfo;
+import service.ClassInfoService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 
 @WebServlet("/create-class")
 @Slf4j
@@ -21,7 +26,22 @@ public class ClassInfoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        ClassInfoService classInfoService = new ClassInfoService();
+        String time = req.getParameter("time");
+        String[] timepart = time.split("-");
+        String startTime = timepart[0];
+        String endTime = timepart[1];
+//        String day = req.getParameter("day");
+        CreateClassInfoDto createClassInfoDto =
+                CreateClassInfoDto
+                        .builder()
+                        .className(req.getParameter("className"))
+                        .startTime(LocalTime.parse(startTime))
+                        .endTime(LocalTime.parse(endTime))
+                        .dayOfWeek(DayOfWeek.valueOf(req.getParameter("day")))
+                        .build();
+        classInfoService.save(createClassInfoDto);
+        resp.sendRedirect("/");
     }
 
     @Override
