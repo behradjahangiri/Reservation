@@ -76,10 +76,10 @@
         <input type="text" name="className" required>
     </div>
 
-    <div class="form-group">
-        <label>Teacher</label>
-        <input type="text" name="teacher" required>
-    </div>
+<%--    <div class="form-group">--%>
+<%--        <label>Teacher</label>--%>
+<%--        <input type="text" name="teacher" required>--%>
+<%--    </div>--%>
 
     <div class="form-group">
         <label>Day</label>
